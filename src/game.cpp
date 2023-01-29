@@ -96,18 +96,3 @@ void Game::Update() {
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
-
-bool Object::hitObject(int x, int y){
-  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)) {
-    return true;
-  }
-  return false;  
-}
-
-void Food::updateScoreAndSpeed(){
-
-}
-
-void Obstacle::hitObstacle(){
-
-}
