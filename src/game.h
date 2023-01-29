@@ -14,10 +14,12 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  void IncreaseScore();
 
  private:
-  Snake snake;
-  SDL_Point food;
+  Snake _snake;
+  Food _food;
+  Obstacle _obstacle;
 
   std::random_device dev;
   std::mt19937 engine;
@@ -26,8 +28,40 @@ class Game {
 
   int score{0};
 
-  void PlaceFood();
+  void PlaceObjects();
   void Update();
 };
+
+class Object 
+{
+
+  public:
+    SDL_Point getPosition(){ return _position; }
+    bool hitObject(int x, int y);
+
+  private:
+    SDL_Point _point;
+
+}
+
+class Object: public Food 
+{
+
+  public:
+
+  private:
+
+
+}
+
+class Object: public Obstacle
+{
+
+  public:
+    void hitObstacle(Snake snake){ snake.alive = false; };
+
+  private:
+
+}
 
 #endif

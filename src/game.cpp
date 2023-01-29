@@ -7,7 +7,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
-  PlaceFood();
+  PlaceObjects();
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -50,17 +50,25 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
-void Game::PlaceFood() {
-  int x, y;
+void Game::PlaceObjects() {
+  int x, y, xObstacle, yObstacle;
   while (true) {
     x = random_w(engine);
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
     if (!snake.SnakeCell(x, y)) {
-      food.x = x;
-      food.y = y;
-      return;
+      _food._position.x = x;
+      _food._position.y = y;
+      while (true) {
+        xObstacle = random_w(engine);
+        yObstacle = random_h(engine);
+        if (!_food.hitObject(xObstacle, yObstacle && !snake.SnakeCell(xObstacle, yObstacle))){
+          _obstacle._position.x = xObstacle;
+          _obstacle._position.y = yObstacle;
+          return;
+        }
+      }
     }
   }
 }
@@ -74,14 +82,32 @@ void Game::Update() {
   int new_y = static_cast<int>(snake.head_y);
 
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y) {
-    score++;
-    PlaceFood();
+  if (_food.hitObject(new_x, new_y)) {
+    IncreaseScore();
+    PlaceObjects();
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.speed += 0.02;
+    snake.IncreaseSpeed();
+  }
+  if (_obstacle.hitObject(new_x, new_y)){
+    _obstacle.hitObstacle(snake);
   }
 }
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
+
+bool Object::hitObject(int x, int y){
+  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)) {
+    return true;
+  }
+  return false;  
+}
+
+void Food::updateScoreAndSpeed(){
+
+}
+
+void Obstacle::hitObstacle(){
+
+}
