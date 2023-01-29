@@ -44,7 +44,7 @@ class Object
 
 }
 
-class Object: public Food 
+class Object : public Food 
 {
 
   public:
@@ -54,7 +54,7 @@ class Object: public Food
 
 }
 
-class Object: public Obstacle
+class Object : public Obstacle
 {
 
   public:
