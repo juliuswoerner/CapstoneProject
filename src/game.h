@@ -36,7 +36,7 @@ class Object
 {
 
   public:
-    SDL_Point getPosition(){ return _position; }
+    SDL_Point getPosition(){ return _point; }
     bool hitObject(int x, int y);
 
   private:
