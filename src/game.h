@@ -42,7 +42,7 @@ class Object
   private:
     SDL_Point _point;
 
-}
+};
 
 class Object : public Food 
 {
@@ -52,7 +52,7 @@ class Object : public Food
   private:
 
 
-}
+};
 
 class Object : public Obstacle
 {
@@ -62,6 +62,6 @@ class Object : public Obstacle
 
   private:
 
-}
+};
 
 #endif
