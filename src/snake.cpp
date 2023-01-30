@@ -64,7 +64,7 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
 }
 
 void Snake::GrowBody() { growing = true; }
-
+// Increases speed of snake if snake collects food.
 void Snake::IncreaseSpeed() { speed += 0.02; }
 
 // Inefficient method to check if cell is occupied by snake.

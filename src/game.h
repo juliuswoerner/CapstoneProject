@@ -10,8 +10,11 @@
 class Food 
 {
   public:
+  // gets private parameter _position
     SDL_Point getPosition() {return _position; };
+    // sets private parameter _position
     void setPosition(int x, int y);
+    // checks if a cell is a food cell
     bool isFood(int x, int y);
 
   private:
@@ -22,9 +25,14 @@ class Food
 class Obstacle
 {
   public:
+    // gets private parameter _position
     SDL_Point getPosition() {return _position; };
+    // sets private parameter _position
     void setPosition(int x, int y);
+    // this function checks if the snake hits a obstacle.
     bool hitObstacle(int x, int y);
+    // this function ends the game if the snake hits the obsticle.
+    // takes reference of snake as input to be able to update the alive parameter.
     void hitObstacle(Snake &snake){ snake.alive = false; };
 
   private:
@@ -39,7 +47,8 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
-  void IncreaseScore() {score += 0.02; };
+  // Increases the score if snake collects food.
+  void IncreaseScore() {score += 1; };
 
  private:
   Snake snake;
