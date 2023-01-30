@@ -11,6 +11,7 @@ class Food
 {
   public:
     SDL_Point getPosition() {return _position; };
+    void setPosition(int x, int y);
     bool isFood(int x, int y);
 
   private:
@@ -22,6 +23,7 @@ class Obstacle
 {
   public:
     SDL_Point getPosition() {return _position; };
+    void setPosition(int x, int y);
     bool hitObstacle(int x, int y);
     void hitObstacle(Snake snake){ snake.alive = false; };
 

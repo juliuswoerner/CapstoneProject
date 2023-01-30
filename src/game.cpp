@@ -58,14 +58,13 @@ void Game::PlaceObjects() {
     // Check that the location is not occupied by a snake item before placing
     // food.
     if (!snake.SnakeCell(x, y)) {
-      _food.getPosition().x = x;
-      _food.getPosition().y = y;
+      _food.setPosition(x,y)
+      // after placing food also place an obstacle on the grid
       while (true) {
         xObstacle = random_w(engine);
         yObstacle = random_h(engine);
-        if (!_food.hitObject(xObstacle, yObstacle && !snake.SnakeCell(xObstacle, yObstacle))){
-          _obstacle.getPosition().x = xObstacle;
-          _obstacle.getPosition().y = yObstacle;
+        if (!_food.isFood(xObstacle, yObstacle && !snake.SnakeCell(xObstacle, yObstacle))){
+          _obstacle.setPosition(xObstacle, yObstacle);
           return;
         }
       }
@@ -104,9 +103,19 @@ bool Obstacle::hitObstacle(int x, int y){
   return false;  
 };
 
+void Obstacle::setPosition(int x, int y){
+  _position.x = x;
+  _position.y = y;
+}
+
 bool Food::isFood(int x, int y){
   if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)){
     return true;
   }
   return false;
 };
+
+void Food::setPosition(int x, int y){
+  _position.x = x;
+  _position.y = y;
+}
