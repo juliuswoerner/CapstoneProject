@@ -41,7 +41,7 @@ class Game {
   void IncreaseScore();
 
  private:
-  Snake _snake;
+  Snake snake;
   Food _food;
   Obstacle _obstacle;
 
