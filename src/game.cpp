@@ -98,13 +98,13 @@ int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
 
 bool Obstacle::hitObstacle(int x, int y){
-  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)) {
+  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position.y)) {
     return true;
   }
   return false;  
 };
 
-bool isFood(int x, int y){
+bool Food::isFood(int x, int y){
   if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)){
     return true;
   }
