@@ -25,7 +25,7 @@ class Obstacle
     SDL_Point getPosition() {return _position; };
     void setPosition(int x, int y);
     bool hitObstacle(int x, int y);
-    void hitObstacle(Snake snake){ snake.alive = false; };
+    void hitObstacle(Snake &snake){ snake.alive = false; };
 
   private:
     SDL_Point _position;
