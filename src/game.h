@@ -33,4 +33,28 @@ class Game {
   void Update();
 };
 
+class Food 
+{
+  public:
+    SDL_Point getPosition() {return _position; };
+    bool isFood(int x, int y);
+    void collectFood();
+
+  private:
+    SDL_Point _position;
+
+};
+
+class Obstacle
+{
+  public:
+    SDL_Point getPosition() {return _position; };
+    bool hitObstacle(int x, int y);
+    void hitObstacle(Snake snake){ snake.alive = false; };
+
+  private:
+    SDL_Point _position;
+
+};
+
 #endif

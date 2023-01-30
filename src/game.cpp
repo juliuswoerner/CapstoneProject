@@ -82,17 +82,24 @@ void Game::Update() {
   int new_y = static_cast<int>(snake.head_y);
 
   // Check if there's food over here
-  if (_food.hitObject(new_x, new_y)) {
+  if (_food.isFood(new_x, new_y)) {
     IncreaseScore();
     PlaceObjects();
     // Grow snake and increase speed.
     snake.GrowBody();
     snake.IncreaseSpeed();
   }
-  if (_obstacle.hitObject(new_x, new_y)){
+  if (_obstacle.hitObstacle(new_x, new_y)){
     _obstacle.hitObstacle(snake);
   }
 }
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
+
+bool Obstacle::hitObstacle(int x, int y){
+  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)) {
+    return true;
+  }
+  return false;  
+};
