@@ -39,7 +39,7 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
-  void IncreaseScore();
+  void IncreaseScore() {score += 0.02; };
 
  private:
   Snake snake;
