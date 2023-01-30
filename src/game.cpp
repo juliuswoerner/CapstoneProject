@@ -109,7 +109,7 @@ void Obstacle::setPosition(int x, int y){
 };
 
 bool Food::isFood(int x, int y){
-  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)){
+  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position.y)){
     return true;
   }
   return false;
