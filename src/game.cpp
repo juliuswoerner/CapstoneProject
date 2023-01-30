@@ -58,14 +58,14 @@ void Game::PlaceObjects() {
     // Check that the location is not occupied by a snake item before placing
     // food.
     if (!snake.SnakeCell(x, y)) {
-      _food._position.x = x;
-      _food._position.y = y;
+      _food.getPosition().x = x;
+      _food.getPosition().y = y;
       while (true) {
         xObstacle = random_w(engine);
         yObstacle = random_h(engine);
         if (!_food.hitObject(xObstacle, yObstacle && !snake.SnakeCell(xObstacle, yObstacle))){
-          _obstacle._position.x = xObstacle;
-          _obstacle._position.y = yObstacle;
+          _obstacle.getPosition().x = xObstacle;
+          _obstacle.getPosition().y = yObstacle;
           return;
         }
       }
