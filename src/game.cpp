@@ -25,7 +25,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, _food.getPosition(), _obstacle.getPosition());
 
     frame_end = SDL_GetTicks();
 
@@ -102,4 +102,11 @@ bool Obstacle::hitObstacle(int x, int y){
     return true;
   }
   return false;  
+};
+
+bool isFood(int x, int y){
+  if (x == static_cast<int>(_position.x) && y == static_cast<int>(_position._y)){
+    return true;
+  }
+  return false;
 };

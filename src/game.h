@@ -12,7 +12,6 @@ class Food
   public:
     SDL_Point getPosition() {return _position; };
     bool isFood(int x, int y);
-    void collectFood();
 
   private:
     SDL_Point _position;
